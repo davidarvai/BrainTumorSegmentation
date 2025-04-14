@@ -1,0 +1,560 @@
+Mapa neve: BraTS20_Training_005
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[8585202  320835  320835  320835]
+ [  13966    7997    7997    7997]
+ [  13966    7997    7997    7997]
+ [  13966    7997    7997    7997]]
+True Positive Rate (TPR): 0.364
+True Negative Rate (TNR): 0.964
+Positive Predictive Value (PPV): 0.024
+Negative Predictive Value (NPV): 0.998
+Accuracy (ACC): 0.962
+Dice Score (DS): 0.046
+
+Mapa neve: BraTS20_Training_005
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8906565 8906565   13882 8906565]
+ [8906565 8906565   13882 8906565]
+ [   7544    7544       9    7544]
+ [8906565 8906565   13882 8906565]]
+True Positive Rate (TPR): 0.001
+True Negative Rate (TNR): 0.998
+Positive Predictive Value (PPV): 0.001
+Negative Predictive Value (NPV): 0.999
+Accuracy (ACC): 0.998
+Dice Score (DS): 0.001
+
+Mapa neve: BraTS20_Training_005
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8603153  310437 8603153  310437]
+ [   9906    4504    9906    4504]
+ [8603153  310437 8603153  310437]
+ [   9906    4504    9906    4504]]
+True Positive Rate (TPR): 0.313
+True Negative Rate (TNR): 0.965
+Positive Predictive Value (PPV): 0.014
+Negative Predictive Value (NPV): 0.999
+Accuracy (ACC): 0.964
+Dice Score (DS): 0.027
+
+Mapa neve: BraTS20_Training_005
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8605284 8605284 8605284  311930]
+ [8605284 8605284 8605284  311930]
+ [8605284 8605284 8605284  311930]
+ [   8372    8372    8372    2414]]
+True Positive Rate (TPR): 0.224
+True Negative Rate (TNR): 0.965
+Positive Predictive Value (PPV): 0.008
+Negative Predictive Value (NPV): 0.999
+Accuracy (ACC): 0.964
+Dice Score (DS): 0.015
+
+Mapa neve: BraTS20_Training_055
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[8182988  626618  626618  626618]
+ [    342  118052  118052  118052]
+ [    342  118052  118052  118052]
+ [    342  118052  118052  118052]]
+True Positive Rate (TPR): 0.997
+True Negative Rate (TNR): 0.929
+Positive Predictive Value (PPV): 0.159
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.93
+Dice Score (DS): 0.274
+
+Mapa neve: BraTS20_Training_055
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8294363 8294363  530410 8294363]
+ [8294363 8294363  530410 8294363]
+ [  42709   42709   60518   42709]
+ [8294363 8294363  530410 8294363]]
+True Positive Rate (TPR): 0.586
+True Negative Rate (TNR): 0.94
+Positive Predictive Value (PPV): 0.102
+Negative Predictive Value (NPV): 0.995
+Accuracy (ACC): 0.936
+Dice Score (DS): 0.174
+
+Mapa neve: BraTS20_Training_055
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8772217  140616 8772217  140616]
+ [   2041   13126    2041   13126]
+ [8772217  140616 8772217  140616]
+ [   2041   13126    2041   13126]]
+True Positive Rate (TPR): 0.865
+True Negative Rate (TNR): 0.984
+Positive Predictive Value (PPV): 0.085
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.984
+Dice Score (DS): 0.155
+
+Mapa neve: BraTS20_Training_055
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8824439 8824439 8824439   94984]
+ [8824439 8824439 8824439   94984]
+ [8824439 8824439 8824439   94984]
+ [     82      82      82    8495]]
+True Positive Rate (TPR): 0.99
+True Negative Rate (TNR): 0.989
+Positive Predictive Value (PPV): 0.082
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.989
+Dice Score (DS): 0.152
+
+Mapa neve: BraTS20_Training_083
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[8452336  402006  402006  402006]
+ [  23337   50321   50321   50321]
+ [  23337   50321   50321   50321]
+ [  23337   50321   50321   50321]]
+True Positive Rate (TPR): 0.683
+True Negative Rate (TNR): 0.955
+Positive Predictive Value (PPV): 0.111
+Negative Predictive Value (NPV): 0.997
+Accuracy (ACC): 0.952
+Dice Score (DS): 0.191
+
+Mapa neve: BraTS20_Training_083
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8838675 8838675   26225 8838675]
+ [8838675 8838675   26225 8838675]
+ [  60855   60855    2245   60855]
+ [8838675 8838675   26225 8838675]]
+True Positive Rate (TPR): 0.036
+True Negative Rate (TNR): 0.997
+Positive Predictive Value (PPV): 0.079
+Negative Predictive Value (NPV): 0.993
+Accuracy (ACC): 0.99
+Dice Score (DS): 0.049
+
+Mapa neve: BraTS20_Training_083
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8498650  418792 8498650  418792]
+ [   5493    5065    5493    5065]
+ [8498650  418792 8498650  418792]
+ [   5493    5065    5493    5065]]
+True Positive Rate (TPR): 0.48
+True Negative Rate (TNR): 0.953
+Positive Predictive Value (PPV): 0.012
+Negative Predictive Value (NPV): 0.999
+Accuracy (ACC): 0.952
+Dice Score (DS): 0.023
+
+Mapa neve: BraTS20_Training_083
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8501886 8501886 8501886  418947]
+ [8501886 8501886 8501886  418947]
+ [8501886 8501886 8501886  418947]
+ [   3435    3435    3435    3732]]
+True Positive Rate (TPR): 0.521
+True Negative Rate (TNR): 0.953
+Positive Predictive Value (PPV): 0.009
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.953
+Dice Score (DS): 0.017
+
+Mapa neve: BraTS20_Training_108
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[8575663  334445  334445  334445]
+ [    277   17615   17615   17615]
+ [    277   17615   17615   17615]
+ [    277   17615   17615   17615]]
+True Positive Rate (TPR): 0.985
+True Negative Rate (TNR): 0.962
+Positive Predictive Value (PPV): 0.05
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.963
+Dice Score (DS): 0.095
+
+Mapa neve: BraTS20_Training_108
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8704524 8704524  213885 8704524]
+ [8704524 8704524  213885 8704524]
+ [   3093    3093    6498    3093]
+ [8704524 8704524  213885 8704524]]
+True Positive Rate (TPR): 0.678
+True Negative Rate (TNR): 0.976
+Positive Predictive Value (PPV): 0.029
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.976
+Dice Score (DS): 0.057
+
+Mapa neve: BraTS20_Training_108
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8796248  123451 8796248  123451]
+ [     75    8226      75    8226]
+ [8796248  123451 8796248  123451]
+ [     75    8226      75    8226]]
+True Positive Rate (TPR): 0.991
+True Negative Rate (TNR): 0.986
+Positive Predictive Value (PPV): 0.062
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.986
+Dice Score (DS): 0.118
+
+Mapa neve: BraTS20_Training_108
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8804151 8804151 8804151  115651]
+ [8804151 8804151 8804151  115651]
+ [8804151 8804151 8804151  115651]
+ [   1116    1116    1116    7082]]
+True Positive Rate (TPR): 0.864
+True Negative Rate (TNR): 0.987
+Positive Predictive Value (PPV): 0.058
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.987
+Dice Score (DS): 0.108
+
+Mapa neve: BraTS20_Training_118
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[8660817  214698  214698  214698]
+ [   6469   46016   46016   46016]
+ [   6469   46016   46016   46016]
+ [   6469   46016   46016   46016]]
+True Positive Rate (TPR): 0.877
+True Negative Rate (TNR): 0.976
+Positive Predictive Value (PPV): 0.176
+Negative Predictive Value (NPV): 0.999
+Accuracy (ACC): 0.975
+Dice Score (DS): 0.294
+
+Mapa neve: BraTS20_Training_118
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8758617 8758617  127159 8758617]
+ [8758617 8758617  127159 8758617]
+ [  14884   14884   27340   14884]
+ [8758617 8758617  127159 8758617]]
+True Positive Rate (TPR): 0.647
+True Negative Rate (TNR): 0.986
+Positive Predictive Value (PPV): 0.177
+Negative Predictive Value (NPV): 0.998
+Accuracy (ACC): 0.984
+Dice Score (DS): 0.278
+
+Mapa neve: BraTS20_Training_118
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8820578   97161 8820578   97161]
+ [   1207    9054    1207    9054]
+ [8820578   97161 8820578   97161]
+ [   1207    9054    1207    9054]]
+True Positive Rate (TPR): 0.882
+True Negative Rate (TNR): 0.989
+Positive Predictive Value (PPV): 0.085
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.989
+Dice Score (DS): 0.155
+
+Mapa neve: BraTS20_Training_118
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8824908 8824908 8824908   95013]
+ [8824908 8824908 8824908   95013]
+ [8824908 8824908 8824908   95013]
+ [     98      98      98    7981]]
+True Positive Rate (TPR): 0.988
+True Negative Rate (TNR): 0.989
+Positive Predictive Value (PPV): 0.077
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.989
+Dice Score (DS): 0.144
+
+Mapa neve: BraTS20_Training_132
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[7957605  796467  796467  796467]
+ [  12135  161793  161793  161793]
+ [  12135  161793  161793  161793]
+ [  12135  161793  161793  161793]]
+True Positive Rate (TPR): 0.93
+True Negative Rate (TNR): 0.909
+Positive Predictive Value (PPV): 0.169
+Negative Predictive Value (NPV): 0.998
+Accuracy (ACC): 0.909
+Dice Score (DS): 0.286
+
+Mapa neve: BraTS20_Training_132
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8467455 8467455  312281 8467455]
+ [8467455 8467455  312281 8467455]
+ [ 142932  142932    5332  142932]
+ [8467455 8467455  312281 8467455]]
+True Positive Rate (TPR): 0.036
+True Negative Rate (TNR): 0.964
+Positive Predictive Value (PPV): 0.017
+Negative Predictive Value (NPV): 0.983
+Accuracy (ACC): 0.949
+Dice Score (DS): 0.023
+
+Mapa neve: BraTS20_Training_132
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8286099  616237 8286099  616237]
+ [   1254   24410    1254   24410]
+ [8286099  616237 8286099  616237]
+ [   1254   24410    1254   24410]]
+True Positive Rate (TPR): 0.951
+True Negative Rate (TNR): 0.931
+Positive Predictive Value (PPV): 0.038
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.931
+Dice Score (DS): 0.073
+
+Mapa neve: BraTS20_Training_132
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8509112 8509112 8509112  397638]
+ [8509112 8509112 8509112  397638]
+ [8509112 8509112 8509112  397638]
+ [    825     825     825   20425]]
+True Positive Rate (TPR): 0.961
+True Negative Rate (TNR): 0.955
+Positive Predictive Value (PPV): 0.049
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.955
+Dice Score (DS): 0.093
+
+Mapa neve: BraTS20_Training_147
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[8578598  210145  210145  210145]
+ [  78122   61135   61135   61135]
+ [  78122   61135   61135   61135]
+ [  78122   61135   61135   61135]]
+True Positive Rate (TPR): 0.439
+True Negative Rate (TNR): 0.976
+Positive Predictive Value (PPV): 0.225
+Negative Predictive Value (NPV): 0.991
+Accuracy (ACC): 0.968
+Dice Score (DS): 0.298
+
+Mapa neve: BraTS20_Training_147
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8785146 8785146   69113 8785146]
+ [8785146 8785146   69113 8785146]
+ [  68662   68662    5079   68662]
+ [8785146 8785146   69113 8785146]]
+True Positive Rate (TPR): 0.069
+True Negative Rate (TNR): 0.992
+Positive Predictive Value (PPV): 0.068
+Negative Predictive Value (NPV): 0.992
+Accuracy (ACC): 0.985
+Dice Score (DS): 0.069
+
+Mapa neve: BraTS20_Training_147
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8691718  170766 8691718  170766]
+ [  39194   26322   39194   26322]
+ [8691718  170766 8691718  170766]
+ [  39194   26322   39194   26322]]
+True Positive Rate (TPR): 0.402
+True Negative Rate (TNR): 0.981
+Positive Predictive Value (PPV): 0.134
+Negative Predictive Value (NPV): 0.996
+Accuracy (ACC): 0.976
+Dice Score (DS): 0.2
+
+Mapa neve: BraTS20_Training_147
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8883807 8883807 8883807   24516]
+ [8883807 8883807 8883807   24516]
+ [8883807 8883807 8883807   24516]
+ [  19203   19203   19203     474]]
+True Positive Rate (TPR): 0.024
+True Negative Rate (TNR): 0.997
+Positive Predictive Value (PPV): 0.019
+Negative Predictive Value (NPV): 0.998
+Accuracy (ACC): 0.995
+Dice Score (DS): 0.021
+
+Mapa neve: BraTS20_Training_151
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[8281060  497474  497474  497474]
+ [  24482  124984  124984  124984]
+ [  24482  124984  124984  124984]
+ [  24482  124984  124984  124984]]
+True Positive Rate (TPR): 0.836
+True Negative Rate (TNR): 0.943
+Positive Predictive Value (PPV): 0.201
+Negative Predictive Value (NPV): 0.997
+Accuracy (ACC): 0.942
+Dice Score (DS): 0.324
+
+Mapa neve: BraTS20_Training_151
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8309352 8309352  532570 8309352]
+ [8309352 8309352  532570 8309352]
+ [   8791    8791   77287    8791]
+ [8309352 8309352  532570 8309352]]
+True Positive Rate (TPR): 0.898
+True Negative Rate (TNR): 0.94
+Positive Predictive Value (PPV): 0.127
+Negative Predictive Value (NPV): 0.999
+Accuracy (ACC): 0.939
+Dice Score (DS): 0.222
+
+Mapa neve: BraTS20_Training_151
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8854180   10432 8854180   10432]
+ [  61219    2169   61219    2169]
+ [8854180   10432 8854180   10432]
+ [  61219    2169   61219    2169]]
+True Positive Rate (TPR): 0.034
+True Negative Rate (TNR): 0.999
+Positive Predictive Value (PPV): 0.172
+Negative Predictive Value (NPV): 0.993
+Accuracy (ACC): 0.992
+Dice Score (DS): 0.057
+
+Mapa neve: BraTS20_Training_151
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8887980 8887980 8887980    1917]
+ [8887980 8887980 8887980    1917]
+ [8887980 8887980 8887980    1917]
+ [  36232   36232   36232    1871]]
+True Positive Rate (TPR): 0.049
+True Negative Rate (TNR): 1.0
+Positive Predictive Value (PPV): 0.494
+Negative Predictive Value (NPV): 0.996
+Accuracy (ACC): 0.996
+Dice Score (DS): 0.089
+
+Mapa neve: BraTS20_Training_340
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[7693119 1157141 1157141 1157141]
+ [   1028   76712   76712   76712]
+ [   1028   76712   76712   76712]
+ [   1028   76712   76712   76712]]
+True Positive Rate (TPR): 0.987
+True Negative Rate (TNR): 0.869
+Positive Predictive Value (PPV): 0.062
+Negative Predictive Value (NPV): 1.0
+Accuracy (ACC): 0.87
+Dice Score (DS): 0.117
+
+Mapa neve: BraTS20_Training_340
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8425539 8425539  472046 8425539]
+ [8425539 8425539  472046 8425539]
+ [  10724   10724   19691   10724]
+ [8425539 8425539  472046 8425539]]
+True Positive Rate (TPR): 0.647
+True Negative Rate (TNR): 0.947
+Positive Predictive Value (PPV): 0.04
+Negative Predictive Value (NPV): 0.999
+Accuracy (ACC): 0.946
+Dice Score (DS): 0.075
+
+Mapa neve: BraTS20_Training_340
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8149302  731373 8149302  731373]
+ [  36582   10743   36582   10743]
+ [8149302  731373 8149302  731373]
+ [  36582   10743   36582   10743]]
+True Positive Rate (TPR): 0.227
+True Negative Rate (TNR): 0.918
+Positive Predictive Value (PPV): 0.014
+Negative Predictive Value (NPV): 0.996
+Accuracy (ACC): 0.914
+Dice Score (DS): 0.027
+
+Mapa neve: BraTS20_Training_340
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8755872 8755872 8755872  141198]
+ [8755872 8755872 8755872  141198]
+ [8755872 8755872 8755872  141198]
+ [  24925   24925   24925    6005]]
+True Positive Rate (TPR): 0.194
+True Negative Rate (TNR): 0.984
+Positive Predictive Value (PPV): 0.041
+Negative Predictive Value (NPV): 0.997
+Accuracy (ACC): 0.981
+Dice Score (DS): 0.067
+
+Mapa neve: BraTS20_Training_369
+Tumor típus: Whole Tumor
+Konfúziós mátrix:
+[[7517464 1185704 1185704 1185704]
+ [ 113938  110894  110894  110894]
+ [ 113938  110894  110894  110894]
+ [ 113938  110894  110894  110894]]
+True Positive Rate (TPR): 0.493
+True Negative Rate (TNR): 0.864
+Positive Predictive Value (PPV): 0.086
+Negative Predictive Value (NPV): 0.985
+Accuracy (ACC): 0.854
+Dice Score (DS): 0.146
+
+Mapa neve: BraTS20_Training_369
+Tumor típus: Edema
+Konfúziós mátrix:
+[[8012945 8012945  753533 8012945]
+ [8012945 8012945  753533 8012945]
+ [ 148915  148915   12607  148915]
+ [8012945 8012945  753533 8012945]]
+True Positive Rate (TPR): 0.078
+True Negative Rate (TNR): 0.914
+Positive Predictive Value (PPV): 0.016
+Negative Predictive Value (NPV): 0.982
+Accuracy (ACC): 0.899
+Dice Score (DS): 0.027
+
+Mapa neve: BraTS20_Training_369
+Tumor típus: Tumor Core
+Konfúziós mátrix:
+[[8362198  502492 8362198  502492]
+ [  35344   27966   35344   27966]
+ [8362198  502492 8362198  502492]
+ [  35344   27966   35344   27966]]
+True Positive Rate (TPR): 0.442
+True Negative Rate (TNR): 0.943
+Positive Predictive Value (PPV): 0.053
+Negative Predictive Value (NPV): 0.996
+Accuracy (ACC): 0.94
+Dice Score (DS): 0.094
+
+Mapa neve: BraTS20_Training_369
+Tumor típus: Enhancing Core
+Konfúziós mátrix:
+[[8404483 8404483 8404483  480796]
+ [8404483 8404483 8404483  480796]
+ [8404483 8404483 8404483  480796]
+ [  19536   19536   19536   23185]]
+True Positive Rate (TPR): 0.543
+True Negative Rate (TNR): 0.946
+Positive Predictive Value (PPV): 0.046
+Negative Predictive Value (NPV): 0.998
+Accuracy (ACC): 0.944
+Dice Score (DS): 0.085
+
