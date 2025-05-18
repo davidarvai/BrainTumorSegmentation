@@ -1,0 +1,224 @@
+Folder name: BraTS20_Training_049
+Tumor type: Whole Tumor
+Confusion matrix:
+[[8834696    9886    9886    9886]
+ [  11643   71775   71775   71775]
+ [  11643   71775   71775   71775]
+ [  11643   71775   71775   71775]]
+TPR: 0.86
+TNR: 0.999
+PPV: 0.879
+NPV: 0.999
+ACC: 0.998
+DS: 0.87
+
+Folder name: BraTS20_Training_049
+Tumor type: Edema
+Confusion matrix:
+[[8841675 8841675   10542 8841675]
+ [8841675 8841675   10542 8841675]
+ [  11711   11711   64072   11711]
+ [8841675 8841675   10542 8841675]]
+TPR: 0.845
+TNR: 0.999
+PPV: 0.859
+NPV: 0.999
+ACC: 0.998
+DS: 0.852
+
+Folder name: BraTS20_Training_049
+Tumor type: Tumor Core
+Confusion matrix:
+[[8919877     488 8919877     488]
+ [   1076    6559    1076    6559]
+ [8919877     488 8919877     488]
+ [   1076    6559    1076    6559]]
+TPR: 0.859
+TNR: 1.0
+PPV: 0.931
+NPV: 1.0
+ACC: 1.0
+DS: 0.893
+
+Folder name: BraTS20_Training_049
+Tumor type: Enhancing Core
+Confusion matrix:
+[[8920871 8920871 8920871    1082]
+ [8920871 8920871 8920871    1082]
+ [8920871 8920871 8920871    1082]
+ [    946     946     946    5101]]
+TPR: 0.844
+TNR: 1.0
+PPV: 0.825
+NPV: 1.0
+ACC: 1.0
+DS: 0.834
+
+Folder name: BraTS20_Training_055
+Tumor type: Whole Tumor
+Confusion matrix:
+[[8809508      98      98      98]
+ [  83682   34712   34712   34712]
+ [  83682   34712   34712   34712]
+ [  83682   34712   34712   34712]]
+TPR: 0.293
+TNR: 1.0
+PPV: 0.997
+NPV: 0.991
+ACC: 0.991
+DS: 0.453
+
+Folder name: BraTS20_Training_055
+Tumor type: Edema
+Confusion matrix:
+[[8824275 8824275     498 8824275]
+ [8824275 8824275     498 8824275]
+ [ 101502  101502    1725  101502]
+ [8824275 8824275     498 8824275]]
+TPR: 0.017
+TNR: 1.0
+PPV: 0.776
+NPV: 0.989
+ACC: 0.989
+DS: 0.033
+
+Folder name: BraTS20_Training_055
+Tumor type: Tumor Core
+Confusion matrix:
+[[8890578   22255 8890578   22255]
+ [   4835   10332    4835   10332]
+ [8890578   22255 8890578   22255]
+ [   4835   10332    4835   10332]]
+TPR: 0.681
+TNR: 0.998
+PPV: 0.317
+NPV: 0.999
+ACC: 0.997
+DS: 0.433
+
+Folder name: BraTS20_Training_055
+Tumor type: Enhancing Core
+Confusion matrix:
+[[8918399 8918399 8918399    1024]
+ [8918399 8918399 8918399    1024]
+ [8918399 8918399 8918399    1024]
+ [   3015    3015    3015    5562]]
+TPR: 0.648
+TNR: 1.0
+PPV: 0.845
+NPV: 1.0
+ACC: 1.0
+DS: 0.734
+
+Folder name: BraTS20_Training_105
+Tumor type: Whole Tumor
+Confusion matrix:
+[[8902521     487     487     487]
+ [  10467   14525   14525   14525]
+ [  10467   14525   14525   14525]
+ [  10467   14525   14525   14525]]
+TPR: 0.581
+TNR: 1.0
+PPV: 0.968
+NPV: 0.999
+ACC: 0.999
+DS: 0.726
+
+Folder name: BraTS20_Training_105
+Tumor type: Edema
+Confusion matrix:
+[[8909991 8909991     934 8909991]
+ [8909991 8909991     934 8909991]
+ [   9989    9989    7086    9989]
+ [8909991 8909991     934 8909991]]
+TPR: 0.415
+TNR: 1.0
+PPV: 0.884
+NPV: 0.999
+ACC: 0.999
+DS: 0.565
+
+Folder name: BraTS20_Training_105
+Tumor type: Tumor Core
+Confusion matrix:
+[[8919965     118 8919965     118]
+ [   1043    6874    1043    6874]
+ [8919965     118 8919965     118]
+ [   1043    6874    1043    6874]]
+TPR: 0.868
+TNR: 1.0
+PPV: 0.983
+NPV: 1.0
+ACC: 1.0
+DS: 0.922
+
+Folder name: BraTS20_Training_105
+Tumor type: Enhancing Core
+Confusion matrix:
+[[8922000 8922000 8922000     156]
+ [8922000 8922000 8922000     156]
+ [8922000 8922000 8922000     156]
+ [   1121    1121    1121    4723]]
+TPR: 0.808
+TNR: 1.0
+PPV: 0.968
+NPV: 1.0
+ACC: 1.0
+DS: 0.881
+
+Folder name: BraTS20_Training_249
+Tumor type: Whole Tumor
+Confusion matrix:
+[[8777023   92160   92160   92160]
+ [   8017   50800   50800   50800]
+ [   8017   50800   50800   50800]
+ [   8017   50800   50800   50800]]
+TPR: 0.864
+TNR: 0.99
+PPV: 0.355
+NPV: 0.999
+ACC: 0.989
+DS: 0.504
+
+Folder name: BraTS20_Training_249
+Tumor type: Edema
+Confusion matrix:
+[[8795118 8795118   95815 8795118]
+ [8795118 8795118   95815 8795118]
+ [   7049    7049   30018    7049]
+ [8795118 8795118   95815 8795118]]
+TPR: 0.81
+TNR: 0.989
+PPV: 0.239
+NPV: 0.999
+ACC: 0.988
+DS: 0.369
+
+Folder name: BraTS20_Training_249
+Tumor type: Tumor Core
+Confusion matrix:
+[[8903374    2876 8903374    2876]
+ [   7499   14251    7499   14251]
+ [8903374    2876 8903374    2876]
+ [   7499   14251    7499   14251]]
+TPR: 0.655
+TNR: 1.0
+PPV: 0.832
+NPV: 0.999
+ACC: 0.999
+DS: 0.733
+
+Folder name: BraTS20_Training_249
+Tumor type: Enhancing Core
+Confusion matrix:
+[[8905048 8905048 8905048    2792]
+ [8905048 8905048 8905048    2792]
+ [8905048 8905048 8905048    2792]
+ [   6966    6966    6966   13194]]
+TPR: 0.654
+TNR: 1.0
+PPV: 0.825
+NPV: 0.999
+ACC: 0.999
+DS: 0.73
+
