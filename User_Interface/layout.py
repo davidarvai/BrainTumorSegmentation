@@ -4,31 +4,51 @@ from dash import dcc, html
 
 landing_layout = html.Div(
     style={
-        'position':'fixed','top':'0','left':'0','right':'0','bottom':'0',
-        'backgroundImage':"url('/assets/doctor_with_films_.jpg')",
-        'backgroundRepeat':'no-repeat','backgroundSize':'cover','backgroundPosition':'center',
-        'display':'flex','flexDirection':'column','justifyContent':'center','alignItems':'center',
-        'color':'white','textAlign':'center','textShadow':'2px 2px 4px rgba(0,0,0,0.8)'
+        'position': 'fixed', 'top': '0', 'left': '0', 'right': '0', 'bottom': '0',
+        'backgroundImage': "url('/assets/doctor_with_films_.jpg')",
+        'backgroundRepeat': 'no-repeat', 'backgroundSize': 'cover', 'backgroundPosition': 'center',
+        'display': 'flex', 'flexDirection': 'column', 'justifyContent': 'center', 'alignItems': 'center',
+        'color': 'white', 'textAlign': 'center'
     },
     children=[
-        html.H1("Welcome to the Diagnostic System", style={'fontSize':'48px','marginBottom':'20px','color': '#B2EBF2'}),
-        html.P("Please upload the folder in ZIP format (containing the patient folders and the CSV with the metrics).",
-               style={'fontSize':'24px','marginBottom':'40px','color': '#B2EBF2'}),
-        dcc.Loading(
-            id='loading-container',
-            children=html.Div(
-                id='upload-container',
-                children=[
-                    dcc.Upload(
-                        id='upload-zip',
-                        children=html.Div("Drag & drop ZIP here, or click to select."),
-                        style={'width':'60%','margin':'0 auto','padding':'20px','border':'2px dashed #fff',
-                               'textAlign':'center','cursor':'pointer','color': '#B2EBF2'},
-                        multiple=False,
-                        disabled=False
+        html.Div(
+            style={
+                'backgroundColor': 'rgba(0, 0, 0, 0.6)',
+                'padding': '40px',
+                'borderRadius': '15px',
+                'boxShadow': '0 4px 20px rgba(0,0,0,0.7)',
+                'maxWidth': '800px',
+                'margin': '20px'
+            },
+            children=[
+                html.H1(
+                    "Welcome to the Diagnostic System",
+                    style={'fontSize': '48px', 'marginBottom': '20px', 'color': '#B2EBF2'}
+                ),
+                html.P(
+                    "Please upload the folder in ZIP format (containing the patient folders and the CSV with the metrics).",
+                    style={'fontSize': '24px', 'marginBottom': '40px', 'color': '#B2EBF2'}
+                ),
+                dcc.Loading(
+                    id='loading-container',
+                    children=html.Div(
+                        id='upload-container',
+                        children=[
+                            dcc.Upload(
+                                id='upload-zip',
+                                children=html.Div("Drag & drop ZIP here, or click to select."),
+                                style={
+                                    'width': '60%', 'margin': '0 auto', 'padding': '20px',
+                                    'border': '2px dashed #fff', 'textAlign': 'center',
+                                    'cursor': 'pointer', 'color': '#B2EBF2'
+                                },
+                                multiple=False,
+                                disabled=False
+                            )
+                        ]
                     )
-                ]
-            )
+                )
+            ]
         )
     ]
 )
@@ -106,7 +126,9 @@ dashboard_layout = html.Div(
                                         dcc.Dropdown(
                                             id="sequence-dropdown-3d",
                                             options=[],
-                                            value=None
+                                            value=None,
+                                            searchable = False,
+                                            clearable = False
                                         )
                                     ],
                                     style={'width': '45%'}
@@ -186,50 +208,102 @@ dashboard_layout = html.Div(
                 dcc.Tab(
                     label="Metrics",
                     value='tab-metrics',
-                    style={'border': 'none','fontWeight': 'bold'},
+                    style={'border': 'none', 'fontWeight': 'bold'},
                     selected_style={'border': 'none'},
                     children=[
+                        # Start of blue background block
                         html.Div(
-                            children=[
-                                html.Label(
-                                    "Metric display mode:",
-                                    style={'fontSize': '20px', 'fontWeight': 'bold','marginTop': '20px'}
-                                ),
-                                dcc.RadioItems(
-                                    id="metrics-mode",
-                                    options=[
-                                        {"label": "Given patient", "value": "patient"},
-                                        {"label": "All patients", "value": "all"}
-                                    ],
-                                    value="patient",
-                                    labelStyle={'display': 'inline-block', 'margin-right': '20px','fontSize': '20px','marginTop': '20px'}
-                                )
-                            ],
                             style={
-                                'width': '60%',
-                                'margin': 'auto',
-                                'paddingBottom': '20px',
-                                'marginTop': '20px',
-                                'textAlign': 'center'
-                            }
-                        ),
-                        html.Div(
+                                'backgroundColor': '#b3d9e6',
+                                'paddingBottom': '30px',
+                                'paddingTop': '20px'
+                            },
                             children=[
-                                html.Label(
-                                    "Select Patient:",
-                                    style={'fontSize': '18px', 'fontWeight': 'bold'}
-                                ),
-                                dcc.Dropdown(
-                                    id="patient-dropdown-metrics",
-                                    options=[],
-                                    value=None,
-                                    searchable=False,
-                                    clearable=False,
-                                    style={'width': '40%', 'margin': 'auto'}
-                                )
-                            ],
-                            id="metrics-patient-dropdown-container",
-                            style={'marginBottom': '20px', 'textAlign': 'center'}
+                                # Radio buttons
+                            html.Div(
+                                children=[
+                                    html.Label(
+                                        "Metric display mode:",
+                                        style={
+                                            'fontSize': '24px',   # larger font size
+                                            'fontWeight': 'bold',
+                                            'marginBottom': '20px',  # Place before the radio buttons
+                                            'display': 'block'
+                                        }
+                                    ),
+                                    dcc.RadioItems(
+                                        id="metrics-mode",
+                                        options=[
+                                            {"label": " Given patient", "value": "patient"},
+                                            {"label": " All patients", "value": "all"}
+                                        ],
+                                        value="patient",
+                                        labelStyle={
+                                            'display': 'inline-block',
+                                            'marginRight': '30px',
+                                            'padding': '8px 15px',
+                                            'borderRadius': '20px',
+                                            'backgroundColor': '#e6f2f7',
+                                            'cursor': 'pointer',
+                                            'fontSize': '18px',
+                                            'fontWeight': '500'
+                                        },
+                                    )
+                                ],
+                                style={
+                                    'width': '60%',
+                                    'margin': 'auto',
+                                    'marginBottom': '20px',
+                                    'textAlign': 'center'
+                                }
+                            ),
+
+                                # Two uniform dropdowns in one row
+                                    html.Div(
+                                        children=[
+                                            html.Div(
+                                                children=[
+                                                    html.Label(
+                                                        "Select Table Type:",
+                                                        style={'fontSize': '18px', 'fontWeight': 'bold'}
+                                                    ),
+                                                    dcc.Dropdown(
+                                                        id="metrics-table-type-dropdown",
+                                                        options=[
+                                                            {'label': 'Performance Metrics by Tumor Type',
+                                                             'value': 'tumor-metrics'},
+                                                            {'label': 'Confusion Matrix & Performance Metrics',
+                                                             'value': 'confusion-matrix'}
+                                                        ],
+                                                        value='tumor-metrics',
+                                                        clearable=False,
+                                                        searchable=False,
+                                                        style={'width': '100%', 'backgroundColor': 'white'}
+                                                    )
+                                                ],
+                                                style={'width': '48%', 'display': 'inline-block', 'verticalAlign': 'top'}
+                                            ),
+                                            html.Div(
+                                                children=[
+                                                    html.Label(
+                                                        "Select Patient:",
+                                                        style={'fontSize': '18px', 'fontWeight': 'bold'}
+                                                    ),
+                                                    dcc.Dropdown(
+                                                        id="patient-dropdown-metrics",
+                                                        options=[],
+                                                        value=None,
+                                                        searchable=False,
+                                                        clearable=False,
+                                                        style={'width': '100%', 'backgroundColor': 'white'}
+                                                    )
+                                                ],
+                                                style={'width': '48%', 'display': 'inline-block', 'verticalAlign': 'top'}
+                                            )
+                                        ],
+                                        style={'width': '70%', 'margin': 'auto', 'display': 'flex', 'justifyContent': 'space-between'}
+                                    )
+                            ]
                         ),
                         dcc.Graph(
                             id="metrics-graph",

@@ -37,6 +37,8 @@ thumbnail_cache = {}
 full_image_cache = {}
 uploaded_base_path = None
 
+
+# Returns a sorted list of patient directory names from the uploaded base path if it exists.
 def get_patient_dirs():
     global uploaded_base_path
     if uploaded_base_path and os.path.exists(uploaded_base_path):
@@ -46,6 +48,7 @@ def get_patient_dirs():
         return dirs
     return []
 
+# Returns a dictionary mapping sequence types (e.g. T1, T2, FLAIR, etc.) to their corresponding .nii file paths for a given patient directory.
 def get_sequence_files(patient_dir):
     global uploaded_base_path
     full_path = os.path.join(uploaded_base_path, patient_dir)
@@ -65,6 +68,7 @@ def get_sequence_files(patient_dir):
                 break
     return seq_files
 
+# Loads a NIfTI file and caches the result for future access.
 def load_nifti(fp):
     if fp in nifti_cache:
         return nifti_cache[fp]
@@ -73,20 +77,23 @@ def load_nifti(fp):
     nifti_cache[fp] = data
     return data
 
+#Centers a 3D mesh by shifting vertices to the origin.
 def center_mesh(verts):
     mn = verts.min(axis=0)
     mx = verts.max(axis=0)
     return verts - ((mn + mx) / 2)
 
+# Generates a 3D mesh (vertices and faces) from volumetric data using the marching cubes algorithm.
 def create_mesh(data, level=1.5):
     verts, faces, _, _ = measure.marching_cubes(data, level=level)
     return center_mesh(verts), faces
 
-def create_figure(verts, faces, t_verts=None, t_faces=None):
+# Creates and returns a 3D Plotly figure from one or two meshes with customizable opacity.
+def create_figure(verts, faces, t_verts=None, t_faces=None, opacity=0.6):
     mesh = go.Mesh3d(
         x=verts[:,0], y=verts[:,1], z=verts[:,2],
         i=faces[:,0], j=faces[:,1], k=faces[:,2],
-        opacity=0.6, color='lightgrey'
+        opacity=opacity, color='lightgrey'
     )
     data = [mesh]
     if t_verts is not None:
@@ -105,10 +112,11 @@ def create_figure(verts, faces, t_verts=None, t_faces=None):
             yaxis=dict(showbackground=False,visible=False,showticklabels=False),
             zaxis=dict(showbackground=False,visible=False,showticklabels=False),
         ),
-        width=1600, height=800
+        width=1800, height=800
     )
     return fig
 
+# Generates a PNG image (as a base64 string) from a selected 2D slice of 3D data
 def create_png_from_slice(data, idx, dpi=80):
     from PIL import Image
     import matplotlib.pyplot as plt
@@ -175,6 +183,7 @@ def display_page(path):
     Input('upload-zip', 'contents'),
     State('upload-zip', 'filename')
 )
+
 def upload_zip(contents, filename):
     global uploaded_base_path
     if contents is None:
@@ -237,6 +246,8 @@ def update_seq_3d(patient):
     Output('brain-graph', 'figure'),
     [Input('patient-dropdown-3d', 'value'), Input('sequence-dropdown-3d', 'value')]
 )
+
+
 def update_3d_graph(patient, seq_key):
     if not patient or not seq_key:
         return go.Figure()
@@ -247,12 +258,22 @@ def update_3d_graph(patient, seq_key):
         return go.Figure()
     try:
         data = load_nifti(fp)
-        v, f = create_mesh(data, level=0.5)
+
+        # Dynamic level
+        factor_map = {'t1': 0.25, 't2': 0.3, 't1ce': 0.35}
+        factor = factor_map.get(seq_key, 0.3)
+        v, f = create_mesh(data, factor)
+
         tv, tf = (None, None)
         if seg_fp:
             td = load_nifti(seg_fp)
-            tv, tf = create_mesh(td, level=0.5)
-        return create_figure(v, f, tv, tf)
+            tv, tf = create_mesh(td, 0.4)
+
+        # Dynamic opacity
+        opacity_map = {'t1': 0.3, 't2': 0.6, 't1ce': 0.9}
+        opacity = opacity_map.get(seq_key, 0.6)
+
+        return create_figure(v, f, tv, tf, opacity=opacity)
     except Exception as e:
         fig = go.Figure()
         fig.add_annotation(text=str(e), x=0.5, y=0.5, showarrow=False)
@@ -339,10 +360,14 @@ def display_modal(thumbnail_clicks, close_click, patient):
 # Updating the METRICS chart
 @app.callback(
     Output("metrics-graph", "figure"),
-    [Input("metrics-mode", "value"),
-     Input("patient-dropdown-metrics", "value")]
+    [
+        Input("metrics-mode", "value"),
+        Input("patient-dropdown-metrics", "value"),
+        Input("metrics-table-type-dropdown", "value")
+    ]
 )
-def update_metrics_graph(mode, selected_patient):
+
+def update_metrics_graph(mode, selected_patient, table_type):
     global uploaded_base_path
     csv_path = os.path.join(uploaded_base_path, "metrics_output.csv")
     try:
@@ -357,78 +382,144 @@ def update_metrics_graph(mode, selected_patient):
         )
         return fig
 
-    # Only these six metrics
-    all_metrics = ["TPR", "TNR", "PPV", "NPV", "ACC", "DS"]
     fig = go.Figure()
 
-    # Add bar traces
-    if mode == "patient":
-        if not selected_patient:
-            return fig
-        df_patient = df[df["Name"] == selected_patient]
-        if df_patient.empty:
-            fig.add_annotation(
-                text="No metric data available for the selected patient.",
-                x=0.5, y=0.5, showarrow=False,
-                font=dict(size=16, color="black")
-            )
-            return fig
-        for metric in all_metrics:
-            fig.add_trace(go.Bar(
-                name=metric,
-                x=df_patient["TumorType"],
-                y=df_patient[metric]
-            ))
-        right_header = f"Patient Metrics: {selected_patient}"
-    else:
-        grouped = df.groupby("Name")[all_metrics].mean().reset_index()
-        for metric in all_metrics:
-            fig.add_trace(go.Bar(
-                name=metric,
-                x=grouped["Name"],
-                y=grouped[metric]
-            ))
-        right_header = "All Patients"
+    # --- Performance Metrics by Tumor Type ---
+    if table_type == "tumor-metrics":
+        all_metrics = ["TPR", "TNR", "PPV", "NPV", "ACC", "DS"]
 
-    # Tighten header positions and margin
-    fig.update_layout(
-        barmode='group',
-        title=None,
-        xaxis=dict(title=''),
-        yaxis_title="Value",
-        title_font_size=22,
-        font=dict(size=16),
-        yaxis=dict(range=[0, 1]),
+        if mode == "patient":
+            if not selected_patient:
+                return fig
+            df_patient = df[df["Name"] == selected_patient]
+            if df_patient.empty:
+                fig.add_annotation(
+                    text="No metric data available for the selected patient.",
+                    x=0.5, y=0.5, showarrow=False,
+                    font=dict(size=16, color="black")
+                )
+                return fig
+            for metric in all_metrics:
+                fig.add_trace(go.Bar(
+                    name=metric,
+                    x=df_patient["TumorType"],
+                    y=df_patient[metric],
+                    text=df_patient[metric].round(3),
+                    textposition='outside',
+                    hovertemplate='%{x}<br>' + metric + ': %{y:.3f}<extra></extra>'
+                ))
+            right_header = f"Patient Metrics: {selected_patient}"
+        else:
+            grouped = df.groupby("Name")[all_metrics].mean().reset_index()
+            for metric in all_metrics:
+                fig.add_trace(go.Bar(
+                    name=metric,
+                    x=grouped["Name"],
+                    y=grouped[metric]
+                ))
+            right_header = "All Patients"
 
-        annotations=[
-            # Left header at y=1.10
-            dict(
-                text="Performance Metrics by Tumor Type",
-                x=0, y=1.10,
-                xref='paper', yref='paper',
-                xanchor='left', yanchor='bottom',
-                showarrow=False,
-                font=dict(size=20, color="black", family="Arial")
+        fig.update_layout(
+            barmode='group',
+            title=None,
+            xaxis=dict(title=''),
+            yaxis_title="Value",
+            title_font_size=22,
+            font=dict(size=16),
+            yaxis=dict(range=[0, 1.50]),
+            annotations=[
+                dict(
+                    text="Performance Metrics by Tumor Type",
+                    x=0, y=1.10,
+                    xref='paper', yref='paper',
+                    xanchor='left', yanchor='bottom',
+                    showarrow=False,
+                    font=dict(size=20, color="black", family="Arial")
+                ),
+                dict(
+                    text=right_header,
+                    x=1, y=1.10,
+                    xref='paper', yref='paper',
+                    xanchor='right', yanchor='bottom',
+                    showarrow=False,
+                    font=dict(size=20, color="black", family="Arial")
+                ),
+            ],
+            legend=dict(
+                orientation='h',
+                x=0.5, y=1.00,
+                xanchor='center', yanchor='bottom'
             ),
-            # Right header at y=1.10
-            dict(
-                text=right_header,
-                x=1, y=1.10,
-                xref='paper', yref='paper',
-                xanchor='right', yanchor='bottom',
-                showarrow=False,
-                font=dict(size=20, color="black", family="Arial")
+            margin=dict(t=120),
+        )
+
+    # --- Confusion Matrix & Performance Metrics ---
+    elif table_type == "confusion-matrix":
+        all_metrics = ["TP", "TN", "FP", "FN"]
+
+        if mode == "patient":
+            if not selected_patient:
+                return fig
+            df_patient = df[df["Name"] == selected_patient]
+            if df_patient.empty:
+                fig.add_annotation(
+                    text="No confusion matrix data available for the selected patient.",
+                    x=0.5, y=0.5, showarrow=False,
+                    font=dict(size=16, color="black")
+                )
+                return fig
+            for metric in all_metrics:
+                fig.add_trace(go.Bar(
+                    name=metric,
+                    x=df_patient["TumorType"],
+                    y=df_patient[metric],
+                    text=df_patient[metric],
+                    textposition='outside',
+                    hovertemplate='%{x}<br>' + metric + ': %{y}<extra></extra>'
+                ))
+            right_header = f"Confusion Matrix: {selected_patient}"
+        else:
+            grouped = df.groupby("Name")[all_metrics].sum().reset_index()
+            for metric in all_metrics:
+                fig.add_trace(go.Bar(
+                    name=metric,
+                    x=grouped["Name"],
+                    y=grouped[metric]
+                ))
+            right_header = "Confusion Matrix: All Patients"
+
+        fig.update_layout(
+            barmode='group',
+            title=None,
+            xaxis=dict(title=''),
+            yaxis_title="Count",
+            title_font_size=22,
+            font=dict(size=16),
+            annotations=[
+                dict(
+                    text="Confusion Matrix & Performance Metrics",
+                    x=0, y=1.10,
+                    xref='paper', yref='paper',
+                    xanchor='left', yanchor='bottom',
+                    showarrow=False,
+                    font=dict(size=20, color="black", family="Arial")
+                ),
+                dict(
+                    text=right_header,
+                    x=1, y=1.10,
+                    xref='paper', yref='paper',
+                    xanchor='right', yanchor='bottom',
+                    showarrow=False,
+                    font=dict(size=20, color="black", family="Arial")
+                ),
+            ],
+            legend=dict(
+                orientation='h',
+                x=0.5, y=1.00,
+                xanchor='center', yanchor='bottom'
             ),
-        ],
-
-        legend=dict(
-            orientation='h',
-            x=0.5, y=1.00,
-            xanchor='center', yanchor='bottom'
-        ),
-
-        margin=dict(t=120),  # less top margin so headers sit closer
-    )
+            margin=dict(t=120),
+        )
 
     return fig
 
