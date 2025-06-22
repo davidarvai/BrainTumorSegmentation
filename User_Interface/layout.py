@@ -36,7 +36,7 @@ landing_layout = html.Div(
                         children=[
                             dcc.Upload(
                                 id='upload-zip',
-                                children=html.Div("Drag & drop ZIP here, or click to select."),
+                                children=html.Div("Click here to upload the ZIP file."),
                                 style={
                                     'width': '60%', 'margin': '0 auto', 'padding': '20px',
                                     'border': '2px dashed #fff', 'textAlign': 'center',

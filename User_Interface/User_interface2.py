@@ -189,29 +189,59 @@ def upload_zip(contents, filename):
     if contents is None:
         return dash.no_update, dash.no_update, False
 
-    processing = html.Div("Processing upload… Please wait.", style={'fontSize':'20px'})
+    processing = html.Div("Processing upload… Please wait.", style={'fontSize': '20px'})
     content_type, b64 = contents.split(',')
     data = base64.b64decode(b64)
     folder = os.path.join(os.getcwd(), 'uploaded_data')
     os.makedirs(folder, exist_ok=True)
+
+    # Sample for file types
+    patterns = {
+        "t1ce": re.compile(r't1ce', re.IGNORECASE),
+        "t1": re.compile(r't1(?!ce)', re.IGNORECASE),
+        "t2": re.compile(r't2', re.IGNORECASE),
+        "flair": re.compile(r'flair', re.IGNORECASE),
+        "seg": re.compile(r'seg', re.IGNORECASE)
+    }
+
     try:
         with zipfile.ZipFile(io.BytesIO(data), 'r') as zp:
             zp.extractall(folder)
+
         subs = [d for d in os.listdir(folder) if os.path.isdir(os.path.join(folder, d))]
         uploaded_base_path = os.path.join(folder, subs[0]) if len(subs) == 1 else folder
+
+        # Check: is there a suitable .nii file
+        found_valid_file = False
+        for root, dirs, files in os.walk(uploaded_base_path):
+            for file in files:
+                if file.endswith('.nii'):
+                    for pat in patterns.values():
+                        if pat.search(file):
+                            found_valid_file = True
+                            break
+                if found_valid_file:
+                    break
+            if found_valid_file:
+                break
+
+        if not found_valid_file:
+            raise ValueError("The ZIP does not contain the expected types of .nii files: t1ce, t1, t2, flair, or seg.")
+
         cont = dcc.Link("Continue to the system", href="/dashboard",
-                        style={ 'fontSize': '24px','color': '#012E40','fontWeight': 'bold','textDecoration': 'none',
-                                'textShadow': 'none',
-                                'filter': 'none',
-                               'backgroundColor':'#4FC3F7','padding':'10px 20px',
-                               'borderRadius':'10px'})
+                        style={'fontSize': '24px', 'color': '#012E40', 'fontWeight': 'bold',
+                               'textDecoration': 'none', 'backgroundColor': '#4FC3F7',
+                               'padding': '10px 20px', 'borderRadius': '10px'})
         return uploaded_base_path, cont, True
+
     except Exception as err:
-        err_div = html.Div(f"Error during upload: {err}", style={'color':'red','fontSize':'25px','fontWeight': 'bold','paddingBottom': '10px'})
+        err_div = html.Div(f" Upload error:  {err}", style={
+            'color': 'red', 'fontSize': '25px', 'fontWeight': 'bold', 'paddingBottom': '10px'
+        })
         upload_box = dcc.Upload(
-            id='upload-zip', children=html.Div("Drag & drop ZIP here, or click to select."),
-            style={'width':'60%','margin':'0 auto','padding':'20px','border':'2px dashed #fff',
-                   'textAlign':'center','cursor':'pointer'}, multiple=False, disabled=False
+            id='upload-zip', children=html.Div("Click here to upload the ZIP file."),
+            style={'width': '60%', 'margin': '0 auto', 'padding': '20px', 'border': '2px dashed #fff',
+                   'textAlign': 'center', 'cursor': 'pointer'}, multiple=False, disabled=False
         )
         return dash.no_update, html.Div([err_div, upload_box]), False
 
@@ -370,15 +400,19 @@ def display_modal(thumbnail_clicks, close_click, patient):
 def update_metrics_graph(mode, selected_patient, table_type):
     global uploaded_base_path
     csv_path = os.path.join(uploaded_base_path, "metrics_output.csv")
+
     try:
         df = pd.read_csv(csv_path)
     except Exception as e:
+        print(f"[DEBUG] Error reading CSV: {e}")  # Developer log
         fig = go.Figure()
         fig.add_annotation(
-            text=f"Error reading CSV: {e}",
+            text="Failed to load performance data. Please check the uploaded file.",
             x=0.5, y=0.5,
+            xref='paper', yref='paper',
+            xanchor='center', yanchor='middle',
             showarrow=False,
-            font=dict(size=16, color="black")
+            font=dict(size=16, color="red")
         )
         return fig
 
@@ -395,8 +429,11 @@ def update_metrics_graph(mode, selected_patient, table_type):
             if df_patient.empty:
                 fig.add_annotation(
                     text="No metric data available for the selected patient.",
-                    x=0.5, y=0.5, showarrow=False,
-                    font=dict(size=16, color="black")
+                    x=0.5, y=0.5,
+                    xref='paper', yref='paper',
+                    xanchor='center', yanchor='middle',
+                    showarrow=False,
+                    font=dict(size=16, color="red")
                 )
                 return fig
             for metric in all_metrics:
@@ -464,7 +501,10 @@ def update_metrics_graph(mode, selected_patient, table_type):
             if df_patient.empty:
                 fig.add_annotation(
                     text="No confusion matrix data available for the selected patient.",
-                    x=0.5, y=0.5, showarrow=False,
+                    x=0.5, y=0.5,
+                    xref='paper', yref='paper',
+                    xanchor='center', yanchor='middle',
+                    showarrow=False,
                     font=dict(size=16, color="black")
                 )
                 return fig
