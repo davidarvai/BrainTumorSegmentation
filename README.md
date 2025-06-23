@@ -1,7 +1,6 @@
 # Agytumor részeinek felismerése és szegmentálása multispektrális MRI felvételekből mély tanulású neurális hálózatokkal 
 
-Ez a projekt az agytumorok felismerését és szegmentálását valósítja meg multispektrális MRI felvételeken mély tanulású neurális hálózatok és gépi tanulási modellek segítségével. 
-Az implementáció során CNN algoritmust használok a tumor területeinek pontos azonosítására.
+Ez a projekt az agytumorok automatikus felismerését és szegmentálását valósítja meg multispektrális MRI felvételeken, mélytanulás-alapú konvolúciós neurális hálózat segítségével.
 
 Főbb funkciók
 MRI képek feldolgozása és előkészítése szegmentálásra
